@@ -1,5 +1,6 @@
 {
     "private": true,
+    "sideEffects": false,
     "scripts": {
         "build": "next build",
         "dev": "next",
