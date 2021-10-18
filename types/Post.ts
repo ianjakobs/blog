@@ -1,16 +1,9 @@
-import Author from './Author'
-
 type Post = {
+    content: string
+    date: string
+    excerpt: string
     slug: string
     title: string
-    date: string
-    coverImage: string
-    author: Author
-    excerpt: string
-    ogImage: {
-        url: string
-    }
-    content: string
 }
 
 export default Post

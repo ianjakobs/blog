@@ -1,3 +1,7 @@
+# Auto-generated files
+/public/feed.xml
+/public/sitemap.xml
+
 # Dependencies
 /node_modules
 npm-debug.log*

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://ianjakobs.com/sitemap.xml

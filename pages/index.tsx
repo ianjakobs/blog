@@ -1,59 +1,50 @@
-import Head from 'next/head'
-
-import Container from '../components/container'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import MoreStories from '../components/more-stories'
-import { CMS_NAME } from '../lib/constants'
+// import { Avatar, Heading, Link, Separator, Text } from '@/components/ui'
+import { Avatar, Heading, Link, Text } from '@/components/ui'
+import { Container, Layout } from '@/components/app'
+import { List } from '@/components/post'
+import { NAME } from '@/lib/constants'
 import { Post } from '@/types'
-import { getAllPosts } from '../lib/api'
+import { getPosts } from '@/lib/helpers'
 
-type Props = {
-    allPosts: Post[]
+type PageProps = {
+    posts: Post[]
 }
 
-const Index = ({ allPosts }: Props) => {
-    const heroPost = allPosts[0]
-    const morePosts = allPosts.slice(1)
-    return (
-        <>
-            <Layout>
-                <Head>
-                    <title>Next.js Blog Example with {CMS_NAME}</title>
-                </Head>
-                <Container>
-                    <Intro />
-                    {heroPost && (
-                        <HeroPost
-                            title={heroPost.title}
-                            coverImage={heroPost.coverImage}
-                            date={heroPost.date}
-                            author={heroPost.author}
-                            slug={heroPost.slug}
-                            excerpt={heroPost.excerpt}
-                        />
-                    )}
-                    {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-                </Container>
-            </Layout>
-        </>
-    )
-}
+const Page = ({ posts }: PageProps) => (
+    <Layout>
+        <Container>
+            <section className="flex flex-col-reverse items-start justify-between sm:flex-row sm:items-center mb-12 sm:mb-24">
+                <div>
+                    <Heading as="h1" className="!text-6xl sm:!text-8xl">{NAME}</Heading>
+                    <Text variant="secondary">
+                        Indie Hacker
+                        ·
+                        Building <Link href="https://felingua.com">Felingua</Link> in public
+                    </Text>
+                </div>
 
-export default Index
+                <Avatar className="mb-4 sm:mb-0" />
+            </section>
 
-export const getStaticProps = async () => {
-    const allPosts = getAllPosts([
-        'title',
-        'date',
-        'slug',
-        'author',
-        'coverImage',
-        'excerpt',
-    ])
+            <section>
+                <Heading as="h2">Recent Posts</Heading>
+                <List className="mt-4 sm:mt-6" posts={posts.slice(0, 3)} />
+                {/* <Separator className="my-6" /> */}
+                {/* <Link href="/posts">See All Posts →</Link> */}
+            </section>
+        </Container>
+    </Layout>
+)
 
-    return {
-        props: { allPosts },
+export const getStaticProps = async () => ({
+    props: {
+        posts: getPosts([
+            'date',
+            'excerpt',
+            'slug',
+            'title',
+        ])
     }
-}
+})
+
+export default Page

@@ -1,0 +1,7 @@
+export { default as Avatar } from './Avatar'
+export { default as Heading } from './Heading'
+export { default as Icon } from './Icon'
+export { default as Link } from './Link'
+export { default as Separator } from './Separator'
+export { default as Text } from './Text'
+export { default as Time } from './Time'

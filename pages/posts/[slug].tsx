@@ -1,60 +1,46 @@
-import ErrorPage from 'next/error'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import 'prism-themes/themes/prism-material-dark.css'
 
-import Container from '../../components/container'
-import Header from '../../components/header'
-import Layout from '../../components/layout'
-import PostBody from '../../components/post-body'
-import PostHeader from '../../components/post-header'
-import PostTitle from '../../components/post-title'
-import markdownToHtml from '../../lib/markdownToHtml'
-import { CMS_NAME } from '../../lib/constants'
-import { Post as PostType } from '@/types'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
+import { Avatar, Separator, Text, Time } from '@/components/ui'
+import { Container, Layout } from '@/components/app'
+import { NAME } from '@/lib/constants'
+import { Post } from '@/types'
+import { getPost, getPosts, processMarkdown } from '@/lib/helpers'
 
-type Props = {
-    post: PostType
-    morePosts: PostType[]
-    preview?: boolean
+type PageProps = {
+    post: Post
 }
 
-const Post = ({ post, preview }: Props) => {
-    const router = useRouter()
-    if (!router.isFallback && !post?.slug) {
-        return <ErrorPage statusCode={404} />
-    }
-    return (
-        <Layout preview={preview}>
-            <Container>
-                <Header />
-                {router.isFallback ? (
-                    <PostTitle>Loading…</PostTitle>
-                ) : (
-                    <>
-                        <article className="mb-32">
-                            <Head>
-                                <title>
-                                    {post.title} | Next.js Blog Example with {CMS_NAME}
-                                </title>
-                                <meta property="og:image" content={post.ogImage.url} />
-                            </Head>
-                            <PostHeader
-                                title={post.title}
-                                coverImage={post.coverImage}
-                                date={post.date}
-                                author={post.author}
-                            />
-                            <PostBody content={post.content} />
-                        </article>
-                    </>
-                )}
-            </Container>
-        </Layout>
-    )
-}
+const Page = ({ post }: PageProps) => (
+    <Layout
+        heading={post.title}
+        meta={{
+            title: post.title,
+            description: post.excerpt,
+            type: 'article',
+            published: post.date,
+            modified: post.date,
+        }}
+    >
+        <Container as="article">
+            <Text className="mt-2" size="large" variant="secondary">
+                {post.excerpt}
+            </Text>
+            <Separator className="my-3 w-1/3" variant="accent" weight="heavy" />
 
-export default Post
+            <div className="flex items-center mb-6 sm:mb-12 space-x-2">
+                <Avatar size="small" />
+                <Text size="small" variant="secondary">
+                    {NAME} · <Time date={post.date} />
+                </Text>
+            </div>
+
+            <div
+                className="prose prose-sm sm:prose lg:prose-lg dark:prose-light dark:sm:prose-light"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+        </Container>
+    </Layout>
+)
 
 type Params = {
     params: {
@@ -62,39 +48,32 @@ type Params = {
     }
 }
 
-export async function getStaticProps({ params }: Params) {
-    const post = getPostBySlug(params.slug, [
-        'title',
-        'date',
-        'slug',
-        'author',
+export const getStaticProps = async ({ params }: Params) => {
+    const post = getPost(params.slug, [
         'content',
-        'ogImage',
-        'coverImage',
+        'date',
+        'excerpt',
+        'title',
     ])
-    const content = await markdownToHtml(post.content || '')
 
     return {
         props: {
             post: {
                 ...post,
-                content,
+                content: processMarkdown(post.content),
             },
         },
     }
 }
 
-export async function getStaticPaths() {
-    const posts = getAllPosts(['slug'])
+export const getStaticPaths = async () => ({
+    fallback: false,
+    paths: getPosts(['slug'])
+        .map(post => ({
+            params: {
+                slug: post.slug,
+            },
+        })),
+})
 
-    return {
-        paths: posts.map((post) => {
-            return {
-                params: {
-                    slug: post.slug,
-                },
-            }
-        }),
-        fallback: false,
-    }
-}
+export default Page
