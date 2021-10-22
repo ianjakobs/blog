@@ -21,7 +21,7 @@
     "devDependencies": {
         "@tailwindcss/typography": "^0.4.1",
         "@types/node": "^16.11.1",
-        "@types/react": "^17.0.30",
+        "@types/react": "^17.0.31",
         "@types/react-dom": "^17.0.10",
         "@typescript-eslint/eslint-plugin": "^5.1.0",
         "autoprefixer": "^10.2.5",
