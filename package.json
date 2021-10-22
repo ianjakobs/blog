@@ -30,7 +30,7 @@
         "globby": "^12.0.2",
         "gray-matter": "^4.0.3",
         "image-size": "^1.0.0",
-        "postcss": "^8.3.10",
+        "postcss": "^8.3.11",
         "prism-themes": "^1.9.0",
         "rehype-autolink-headings": "^6.1.0",
         "rehype-prism-plus": "^1.1.0",
