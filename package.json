@@ -33,7 +33,7 @@
         "postcss": "^8.3.11",
         "prism-themes": "^1.9.0",
         "rehype-autolink-headings": "^6.1.0",
-        "rehype-prism-plus": "^1.1.0",
+        "rehype-prism-plus": "^1.1.1",
         "rehype-react": "^7.0.3",
         "rehype-slug": "^5.0.0",
         "rehype-stringify": "^9.0.2",
