@@ -51,7 +51,7 @@ const Layout = ({
                 <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
                 <meta name="theme-color" content="#ffffff" />
 
-                <meta property="og:title" content={meta.title} />
+                <meta property="og:title" content={customMeta?.title || meta.title} />
                 <meta property="og:description" content={meta.description} />
                 <meta property="og:site_name" content={NAME} />
                 <meta property="og:type" content={meta.type} />

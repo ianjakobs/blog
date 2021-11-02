@@ -9,9 +9,11 @@ const withMDX = MDX({
     options: {
         providerImportSource: '@mdx-js/react',
         rehypePlugins: [
+            [rehypeImgSize, {
+                dir: 'public',
+            }],
             rehypePrism,
             rehypeSlug,
-            [rehypeImgSize, { dir: 'public' }],
             [rehypeAutolinkHeadings, {
                 content: ({ tagName }) => ({
                     children: [{ type: 'text', value: '#'.repeat(Number(tagName.charAt(1))) }],
