@@ -49,7 +49,8 @@ const Layout = ({
                 <link rel="shortcut icon" href="/favicon/favicon.ico" />
                 <meta name="msapplication-TileColor" content="#171717" />
                 <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-                <meta name="theme-color" content="#ffffff" />
+                <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+                <meta name="theme-color" content="#171717" media="(prefers-color-scheme: dark)" />
 
                 <meta property="og:title" content={customMeta?.title || meta.title} />
                 <meta property="og:description" content={meta.description} />
