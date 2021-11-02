@@ -1,9 +1,9 @@
-import { Container, Layout } from '@/components/app'
-import { Avatar, Link, Separator, Text } from '@/components/ui'
+import { App } from '@/components/layouts'
+import { Avatar, Container, Link, Separator, Text } from '@/components/ui'
 import { EMAIL, NAME, TWITTER } from '@/lib/constants'
 
 const Page = () => (
-    <Layout heading="About" meta={{ title: 'About', description: 'All about me.' }}>
+    <App heading="About" meta={{ title: 'About', description: 'All about me.' }}>
         <Container as="section">
             <Text className="mt-4 sm:mt-8" variant="secondary">
                 Hi, I’m {NAME}. A product manager by day, I spend my free
@@ -26,7 +26,7 @@ const Page = () => (
                 <Text>{NAME}</Text>
             </div>
         </Container>
-    </Layout>
+    </App>
 )
 
 export default Page

@@ -6,8 +6,7 @@ import { POSTS_DIRECTORY } from '@/lib/constants'
 import { PostFields } from '@/types'
 
 const getPost = (slug: string, fields: PostFields = []) => {
-    const realSlug = slug.replace(/\.md$/, '')
-    const fullPath = join(POSTS_DIRECTORY, `${realSlug}.md`)
+    const fullPath = join(POSTS_DIRECTORY, slug)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
@@ -18,7 +17,7 @@ const getPost = (slug: string, fields: PostFields = []) => {
     const items: Items = {}
 
     fields.forEach((field) => {
-        if (field === 'slug') items[field] = realSlug
+        if (field === 'slug') items[field] = slug.replace('.mdx', '')
         if (field === 'content') items[field] = content
         if (typeof data[field] !== 'undefined') items[field] = data[field]
     })

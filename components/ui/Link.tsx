@@ -4,6 +4,7 @@ import type { LinkProps as NextLinkProps } from 'next/link'
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & NextLinkProps
 
 const Link = ({
+    children,
     className = '',
     ...props
 }: LinkProps) => (
@@ -13,7 +14,14 @@ const Link = ({
             'hover:opacity-70 dark:hover:opacity-80 transition-opacity',
             'underline',
             className,
-        ].join(' ')} {...props} />
+        ].join(' ')} {...props}>
+            {children}
+            {props.href.startsWith('http') && (
+                <span className="text-[0.8em]">
+                    {` `}↗
+                </span>
+            )}
+        </a>
     </NextLink>
 )
 

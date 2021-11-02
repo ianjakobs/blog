@@ -1,4 +1,5 @@
-import { Container, Layout } from '@/components/app'
+import { App } from '@/components/layouts'
+import { Container } from '@/components/ui'
 import { List } from '@/components/post'
 import { Post } from '@/types'
 import { getPosts } from '@/lib/helpers'
@@ -8,11 +9,11 @@ type PageProps = {
 }
 
 const Page = ({ posts }: PageProps) => (
-    <Layout heading="All Posts" meta={{ title: 'Posts' }}>
+    <App heading="All Posts" meta={{ title: 'Posts' }}>
         <Container className="mt-4 sm:mt-6">
             <List posts={posts} />
         </Container>
-    </Layout>
+    </App>
 )
 
 export const getStaticProps = async () => ({
@@ -22,8 +23,8 @@ export const getStaticProps = async () => ({
             'excerpt',
             'slug',
             'title',
-        ])
-    }
+        ]),
+    },
 })
 
 export default Page

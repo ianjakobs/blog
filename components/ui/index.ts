@@ -1,4 +1,5 @@
 export { default as Avatar } from './Avatar'
+export { default as Container } from './Container'
 export { default as Heading } from './Heading'
 export { default as Icon } from './Icon'
 export { default as Link } from './Link'

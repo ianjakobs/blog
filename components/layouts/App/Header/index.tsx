@@ -1,6 +1,5 @@
 import Link from './Link'
-import { Container } from '@/components/app'
-import { Icon } from '@/components/ui'
+import { Container, Icon } from '@/components/ui'
 import { TWITTER } from '@/lib/constants'
 
 const Header = () => (

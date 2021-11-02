@@ -6,6 +6,7 @@ import { PostFields } from '@/types'
 
 const getPosts = (fields: PostFields = []) =>
     fs.readdirSync(POSTS_DIRECTORY)
+        .filter(name => name.endsWith('.mdx'))
         .map(slug => getPost(slug, fields))
         .sort((a, b) => a.date > b.date ? -1 : 1)
 

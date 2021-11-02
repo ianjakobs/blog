@@ -6,8 +6,8 @@ module.exports = {
         require('@tailwindcss/typography'),
     ],
     purge: [
-        './lib/helpers/process-markdown.tsx',
         './components/**/*.tsx',
+        './next.config.mjs',
         './pages/**/*.tsx',
     ],
     darkMode: 'media',

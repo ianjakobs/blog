@@ -1,6 +1,5 @@
 import Link from './Link'
-import { Container } from '@/components/app'
-import { Separator } from '@/components/ui'
+import { Container, Separator } from '@/components/ui'
 
 const Footer = () => (
     <Container as="footer" className="pt-24 sm:pt-32 pb-8 sm:pb-16">
