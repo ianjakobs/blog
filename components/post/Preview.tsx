@@ -19,7 +19,7 @@ const Preview = ({ post }: PreviewProps) => (
                 </Heading>
 
                 <Text className="flex-shrink-0 sm:w-32 text-left sm:text-right" size="small" variant="tertiary">
-                    <Time date={post.date} />
+                    <Time date={post.created} />
                 </Text>
             </header>
 

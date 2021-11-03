@@ -5,34 +5,34 @@ import { NAME } from '@/lib/constants'
 
 export type LayoutProps = {
     children: React.ReactNode
-    frontMatter: Post
+    frontmatter: Post
 }
 
 const Post = ({
     children,
-    frontMatter,
+    frontmatter,
 }: LayoutProps) => (
     <App
         className="min-w-0"
-        heading={frontMatter.title}
+        heading={frontmatter.title}
         meta={{
-            title: frontMatter.title,
-            description: frontMatter.excerpt,
+            title: frontmatter.title,
+            description: frontmatter.excerpt,
             type: 'article',
-            published: frontMatter.date,
-            modified: frontMatter.date,
+            published: frontmatter.created,
+            modified: frontmatter.updated || frontmatter.created,
         }}
     >
         <Container as="article">
             <Text className="mt-2" size="large" variant="secondary">
-                {frontMatter.excerpt}
+                {frontmatter.excerpt}
             </Text>
             <Separator className="my-3 w-1/3" variant="accent" weight="heavy" />
 
             <div className="flex items-center mb-6 sm:mb-12 space-x-2">
                 <Avatar size="small" />
                 <Text size="small" variant="secondary">
-                    {NAME} · <Time date={frontMatter.date} />
+                    {NAME} · <Time date={frontmatter.created} />
                 </Text>
             </div>
 

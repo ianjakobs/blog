@@ -38,7 +38,7 @@ const Page = ({ posts }: PageProps) => (
 export const getStaticProps = async () => ({
     props: {
         posts: getPosts([
-            'date',
+            'created',
             'excerpt',
             'slug',
             'title',

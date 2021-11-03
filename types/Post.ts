@@ -1,9 +1,10 @@
 type Post = {
-    content: string
-    date: string
-    excerpt: string
-    slug: string
     title: string
+    slug: string
+    excerpt: string
+    content: string
+    created: string
+    updated?: string
 }
 
 export default Post

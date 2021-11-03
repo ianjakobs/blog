@@ -1,7 +1,8 @@
 ---
 title: On Desktop Productivity
 excerpt: How to use Karabiner-Elements and Keyboard Maestro to get the most out of macOS.
-date: '2021-11-02T00:00:00.000Z'
+created: '2021-11-02T00:00:00.000Z'
+updated: '2021-11-03T00:00:00.000Z'
 ---
 
 I spend a lot of time behind my laptop. To try and make the most of it, I enjoy getting to know my tools, with the aim of improving both my comfort and my productivity. A big part of this is done by using shortcuts and automations, which not only make me act faster with much less arm movement but also takes away a lot of friction. Hopefully future me will benefit from that.
@@ -81,6 +82,22 @@ Lastly, to try and make my Touch Bar somewhat usable, I found that [Pock](https:
 
 ![Screenshot of "Touch Bar"](/posts/on-desktop-productivity/macos-touch-bar.png)
 
+### Screenshots
+
+macOS has extensive screenshot taking capabilities built in. For a full overview see [their support article](https://support.apple.com/HT201361), but here is a summarized overview:
+
+- `Command-Shift-3` to save a screenshot of the entire screen to file (by default on Desktop).
+- `Command-Control-Shift-3` to save a screenshot of the entire screen to clipboard.
+- `Command-Shift-4` to save a screenshot of an area to file (by default on Desktop).
+- `Command-Control-Shift-4` to save a screenshot of an area to clipboard.
+- `Command-Shift-4` then `Space` to save a screenshot of a window to file (by default on Desktop).
+- `Command-Control-Shift-4` then `Space` to save a screenshot of a window to clipboard.
+- `Command-Shift-5` to start a screen recording.
+
+I particularly like the options to screenshot an area or a window. Also good to know: when you have an area already selected you can press `Space` to drag the selection around, `Option` to resize the selection from the center, or `Shift` to change the selection from just one side while keeping the other as is.
+
+Normally I take screenshots directly to clipboard, but to add markup it needs to be saved to a file. However, if you click on the little screenshot preview in the bottom right of the screen right after taking a screenshot, and then use the markup functionality, you can press `Command-Option-C` to copy the result to clipboard and prevent it from actually being saved to file. Win-win.
+
 ### Shortcuts
 
 To round up the macOS section, here are some default shortcuts I use a lot. Some of these might seem simple, but it also means it's a good starting point to really get into the habit of using shortcuts, especially once you start combining them.
@@ -95,6 +112,7 @@ Two things I just want to point out:
 - `Ctrl-x`, `Ctrl-c`, and `Ctrl-v` to cut, copy, and paste, respectively.
 - `Option-Delete` to delete the previous word.
 - `Command-Delete` to delete the previous line.
+- `Command-,` to open the app settings.
 - `Command-F` to search.
 - `Command-H` to hide the front app.
 - `Command-W` to close a tab.
@@ -315,6 +333,8 @@ As my library of macros grew, I found it helped to keep them well organized. I t
 Other than that, I also have a **→ Helpers** group, with the arrow to keep it sorted on top. This contains macros that I don't use directly; instead, they contain generic actions that I execute from other macros. This lets me keep the main logic in one place, so if I ever have to update it I know where to do it and I only have to do it once.
 
 To use these, insert the action called "Execute a Macro". You can give it a parameter as well, and if you set an [instance variable](https://wiki.keyboardmaestro.com/manual/Variables#Instance_Variables_v8) in the helper macro then you can pass data back to the initial macro. See the [examples subsection](#other-examples) for inspiration on how to use this.
+
+_Note: As of Keyboard Maestro v10.0 this concept of helper macros has been completely replaced by subroutines. Functionally it's the same, but having it as a first-class citizen offers improvements in terms of clarity and usability._
 
 ### Palettes
 
