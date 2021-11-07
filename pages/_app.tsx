@@ -40,8 +40,9 @@ const App = ({ Component, pageProps }: AppProps) => {
             }: Pick<JSX.IntrinsicElements['img'], 'alt' | 'height' | 'src' | 'width'>) => {
                 const hasAppearance = src.includes('-light')
                 const classNames = {
-                    'macos-assign-to': 'max-w-[325px] mx-auto',
                     'keyboard-maestro-palette': 'max-w-[250px]',
+                    'macos-assign-to': 'max-w-[325px] mx-auto',
+                    'pomodoro-menu': 'max-w-[300px]',
                 }
 
                 const className = Object.keys(classNames).reduce((str, key) => src.includes(key)

@@ -1,0 +1,104 @@
+---
+title: On Pomodoro
+excerpt: How to create a minimal Pomodoro menu bar app with Keyboard Maestro.
+created: '2021-11-07T00:00:00.000Z'
+updated: '2021-11-07T00:00:00.000Z'
+---
+
+This week Keyboard Maestro [released v10.0](https://www.stairways.com/press/2021-11-02). That update inspired me to hurry up and get my post [on desktop productivity](/posts/on-desktop-productivity) out, which covers a lot of my Keyboard Maestro setup.
+
+Since then I've been playing around with some of their new features, and there are two in particular I found interesting: the ability to [create subroutines](https://wiki.keyboardmaestro.com/Subroutines) and the ability to [show macro groups in the menu bar](https://wiki.keyboardmaestro.com/manual/Macro_Groups). I decided to build out a minimal Pomodoro app around these features—partially for the learning experience, and partially at the request of my wife.
+
+The rest of the post will go into detail about the steps and the logic behind it, but the complete macro group can be downloaded from the [conclusion](#conclusion).
+
+## Table of Contents
+
+## Background
+
+The [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) is a time management method that has you alternate between periods of focus and short breaks. Normally it's a 25-minute period of work followed by 5 minutes of break, which can then be repeated multiple times.
+
+There are plenty of dedicated apps for this, but I wanted to do it with just Keyboard Maestro. On the one hand for the reasons mentioned in the introduction, and on the other hand for the deep integration it provides me with my other macros.
+
+## Behavior
+
+The way it works is as follows:
+
+1. At rest, there's an item in the menu bar to open up a menu for starting a Pomodoro.
+
+    ![Screenshot of "Keyboard Maestro → Pomodoro → Start"](/posts/on-pomodoro/pomodoro-menu-start-light.png)
+
+2. Clicking the menu item lets me configure the next Pomodoro run: how many loops there should be, and how long each Pomodoro should last. This defaults to 4 loops of 25 minutes, meaning that it covers a period of 2 hours.
+
+    ![Screenshot of "Keyboard Maestro → Pomodoro → Prompt"](/posts/on-pomodoro/pomodoro-prompt-light.png)
+
+3. Starting a Pomodoro will show the remaining time in the menu bar.
+
+    ![Screenshot of "Keyboard Maestro → Pomodoro → Stop"](/posts/on-pomodoro/pomodoro-menu-stop-light.png)
+
+4. In between Pomodoros, the menu bar will show that you're on a break.
+
+    ![Screenshot of "Keyboard Maestro → Pomodoro → Break"](/posts/on-pomodoro/pomodoro-menu-break-light.png)
+
+5. After the break interval, steps 3–4 are repeated, until there are no more loops remaining.
+
+Since this is all done with Keyboard Maestro I can easily hook in any of my other macros. For example, when a Pomodoro starts it [turns on Do Not Disturb](/posts/on-desktop-productivity#toggling-do-not-disturb) and turns my desk light red, and at the end of a Pomodoro it resets both. This part is really up to the user, but having it together with my other macros like this offers a lot of flexibility.
+
+## Macros
+
+The macro group contains four individual macros, and is set to display in the menu bar with a title from the variable `POMODORO_TITLE`. It has no icon, since I prefer to set that through text as well to have them display nicely in the same color.
+
+_Note: For custom icons you can download Apple's [SF Symbols](https://developer.apple.com/sf-symbols/) for free, which is the same set of icons that have just been added to Keyboard Maestro itself._
+
+### Start
+
+The "Start" macro contains two groups called "Logic" with some actions in between. Those macros in between are up to the user, and aren't strictly necessary—they just allow for initiating anything else when starting a Pomodoro. The reason of grouping actions together in those "Logic" groups is purely to make it easier to indicate what's actually necessary for the functionality and where to add in custom actions.
+
+In the first "Logic" group it first prompts for input, allowing configuration of the number of loops and the duration of each Pomodoro. I deliberately placed the `Local Loops` input first, since it seemed more likely to be customized than the duration. While the prompt is open `Enter` will start the Pomodoro and `Escape` will close the prompt and cancel the macro.
+
+In the second "Logic" group I use the configured duration to set the time remaining (`POMODORO_REMAINING`). This is used to keep track of the Pomodoro progress. I then enable the "Stop" macro and disable the "Start" macro, which ensures that only one of them will ever be visible in the menu bar menu: "Start" when no Pomodoro is running, and "Stop" otherwise (see also my approach to [starting and stopping modes](/posts/on-desktop-productivity#starting-and-stopping-modes)). Finally, I execute the "Update" macro.
+
+![Screenshot of "Keyboard Maestro → Pomodoro → Start"](/posts/on-pomodoro/start-light.png)
+
+### Update
+
+The first action saves the ID of the macro instance. This is later used to cancel that specific instance, which is needed in case a Pomodoro is stopped mid run.
+
+The `POMODORO_REMAINING` number is then used to repeat a group of actions _n_ times. First it [sets the title](#set-title), and then it pauses for 1 minute. I initially had this macro set up with the "Periodic Trigger", but since that executes every minute on the minute it didn't ensure an accurate timing.
+
+Once the minute has passed, I decrease the `POMODORO_REMAINING` by 1. If the result is 0 the run the "[stop macro] [stopped](#stop)" is triggered, and otherwise it goes back to the beginning of the repeating group.
+
+![Screenshot of "Keyboard Maestro → Pomodoro → Update"](/posts/on-pomodoro/update-light.png)
+
+### Stop
+
+Similarly to the ["Start"](#start) macro, this contains a "Logic" group and a few actions outside of the group. Those actions outside are again up to the user to allow for customization.
+
+In the "Logic" group, first the earlier saved macro instance is canceled. As described, this is in case the Pomodoro is stopped prematurely through the menu bar item. Important to note here is that this is also the reason the "Execute Macro" action in ["Update"](#update) was called asynchronously; if not, "Stop" would be seen as a child of the "Update" instance, meaning it'd cancel itself.
+
+Next, the `POMODORO_LOOPS` variable is decreased by 1 to indicate that a run has passed. The following "If" check looks if this value is now 0 (meaning all loops have completed) or if the `%TriggerValue%` variable is not `CONTINUE`. That last one needs more explaining.
+
+The ["Stop"](#stop) macro is normally executed by the ["Update"](#update) macro, but it can also be triggered by clicking the "Stop Pomodoro" menu item that shows when opening up the menu bar menu. In that case, the `%TriggerValue%` would be empty, so to differentiate that from an automatic execution from the "Update" macro a parameter is passed along. With that, the "Stop" macro knows to cancel the Pomodoro completely when stopped from the menu bar mid run.
+
+If it's stopped completely, then, it will enable the "Start" macro again and disable the "Stop" macro, and it will delete all the global variables that were used earlier. This isn't strictly necessary, but I like to keep things nice and tidy.
+
+If, instead, there are still more loops to run, it will [set the title](#set-title), pause for 5 minutes, and then execute the "Start" macro again. This is done asynchronously for the same reason as described earlier.
+
+![Screenshot of "Keyboard Maestro → Pomodoro → Stop"](/posts/on-pomodoro/stop-light.png)
+
+### Set Title
+
+The "Set Title" macro is set up as a subroutine. It accepts a parameter `Local State`, and then uses a switch action to update the `POMODORO_TITLE` variable in one of three ways:
+
+- `PAUSED`: Indicate that you're in between Pomodoros.
+- `RUNNING`: Indicate that you're in a Pomodoro and how much time is left.
+- `STOPPED`: Indicate that no Pomodoro is active.
+
+![Screenshot of "Keyboard Maestro → Pomodoro → Set Title"](/posts/on-pomodoro/set-title-light.png)
+
+## Conclusion
+
+This has been a fun exercise where I played around with the new subroutines and menu bar macro groups, and I'm happy with how it turned out. I'm not quite sure yet what else I'll use the menu bar feature for, but it's an interesting area with lots of possibilities.
+
+One improvement I'll probably make is to only enable this macro group when sitting at my desk. [As with my Dock](/posts/on-desktop-productivity#dock), I prefer to keep my menu bar tidy, and at my desk is also where it makes the most sense to use for me.
+
+To download the complete macro group, click here: [Pomodoro](/posts/on-pomodoro/macros.zip).
