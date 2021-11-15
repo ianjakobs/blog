@@ -65,7 +65,6 @@ const App = ({ Component, pageProps }: AppProps) => {
                 )
             },
         }}>
-            {/* @ts-expect-error Dunno */}
             <Component {...pageProps} />
         </MDXProvider>
     )

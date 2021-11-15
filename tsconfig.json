@@ -23,7 +23,8 @@
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "strict": true,
-        "target": "es5"
+        "target": "es5",
+        "tsBuildInfoFile": "./.next/tsconfig.tsbuildinfo"
     },
     "exclude": [
         "node_modules"
