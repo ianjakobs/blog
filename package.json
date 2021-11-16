@@ -25,7 +25,7 @@
         "@next/mdx": "^12.0.4",
         "@tailwindcss/typography": "^0.4.1",
         "@types/node": "^16.11.7",
-        "@types/react": "^17.0.34",
+        "@types/react": "^17.0.35",
         "@types/react-dom": "^17.0.11",
         "@typescript-eslint/eslint-plugin": "^5.4.0",
         "autoprefixer": "^10.4.0",
