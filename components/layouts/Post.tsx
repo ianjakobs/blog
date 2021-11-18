@@ -8,7 +8,7 @@ export type LayoutProps = {
     frontmatter: Post
 }
 
-const Post = ({
+const Layout = ({
     children,
     frontmatter,
 }: LayoutProps) => (
@@ -81,4 +81,4 @@ const Post = ({
     </App>
 )
 
-export default Post
+export default Layout
