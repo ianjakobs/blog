@@ -36,7 +36,7 @@ const Layout = ({
                 </Text>
             </div>
 
-            <div className="prose prose-sm sm:prose lg:prose-lg dark:prose-light dark:sm:prose-light">
+            <div className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert dark:sm:prose-invert">
                 {children}
             </div>
 
