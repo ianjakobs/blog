@@ -1,7 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document'
 
 const Document = () => (
-    <Html lang="en" style={{ scrollBehavior: 'smooth' }}>
+    <Html lang="en" className="scroll-smooth">
         <Head />
 
         <body className={[

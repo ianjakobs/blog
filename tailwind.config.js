@@ -15,6 +15,13 @@ module.exports = {
                 accent: colors.amber,
                 gray: colors.neutral,
             },
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        a: false,
+                    },
+                },
+            }),
         },
     },
 }
