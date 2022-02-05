@@ -35,7 +35,7 @@
         "gray-matter": "^4.0.3",
         "postcss": "^8.4.6",
         "rehype-autolink-headings": "^6.1.1",
-        "rehype-img-size": "^0.0.2",
+        "rehype-img-size": "^1.0.1",
         "rehype-slug": "^5.0.1",
         "rehype-stringify": "^9.0.3",
         "remark": "^14.0.2",
