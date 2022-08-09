@@ -33,7 +33,7 @@
         "eslint-config-next": "^12.2.4",
         "globby": "^13.1.2",
         "gray-matter": "^4.0.3",
-        "postcss": "^8.4.14",
+        "postcss": "^8.4.16",
         "rehype-autolink-headings": "^6.1.1",
         "rehype-img-size": "^1.0.1",
         "rehype-slug": "^5.0.1",
