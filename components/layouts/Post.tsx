@@ -44,7 +44,7 @@ const Layout = ({
                 <Separator className="my-6 sm:my-12 w-1/3" variant="accent" weight="heavy" />
 
                 <Text className="italic" variant="secondary">
-                    I’m an indie hacker building in public on{` `}
+                    I’m a product manager / indie hacker building in public on{` `}
                     <Link href="https://www.twitter.com/ianjakobs">Twitter</Link>.
                     <br />
                     My current project is{` `}

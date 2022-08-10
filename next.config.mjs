@@ -44,9 +44,6 @@ export default withMDX({
     experimental: {
         esmExternals: true,
     },
-    images: {
-        domains: ['cdn.buymeacoffee.com'],
-    },
     pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
     poweredByHeader: false,
     reactStrictMode: true,

@@ -6,7 +6,7 @@ const Page = () => (
     <App heading="About" meta={{ title: 'About', description: 'All about me.' }}>
         <Container as="section">
             <Text className="mt-4 sm:mt-8" variant="secondary">
-                Hi, I’m {NAME}. A product manager by day, I spend my free
+                Hi, I’m {NAME.split(' ')[0]}. A product manager by day, I spend my free
                 time working on side projects. My current focus is{` `}
                 <Link href="https://felingua.com">Felingua</Link>{` `}
                 to help me learn a new language.

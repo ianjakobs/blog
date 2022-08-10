@@ -12,10 +12,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                accent: colors.amber,
+                accent: colors.rose,
                 gray: colors.neutral,
             },
-            typography: (theme) => ({
+            typography: () => ({
                 DEFAULT: {
                     css: {
                         a: false,

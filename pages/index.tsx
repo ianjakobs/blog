@@ -1,5 +1,5 @@
 import { App } from '@/components/layouts'
-import { Avatar, Container, Heading, Link, Separator, Text } from '@/components/ui'
+import { Avatar, Container, Heading, Separator, Text } from '@/components/ui'
 import { List } from '@/components/post'
 import { NAME } from '@/lib/constants'
 import { Post } from '@/types'
@@ -11,25 +11,40 @@ type PageProps = {
 
 const Page = ({ posts }: PageProps) => (
     <App>
-        <Container>
-            <section className="flex flex-col-reverse items-start justify-between sm:flex-row sm:items-center mb-12 sm:mb-24">
+        <Container className="space-y-12 sm:space-y-24">
+            <section className="flex flex-col-reverse justify-between sm:flex-row">
                 <div>
                     <Heading as="h1" className="!text-6xl sm:!text-8xl">{NAME}</Heading>
                     <Text variant="secondary">
-                        Indie Hacker
-                        ·
-                        Building <Link href="https://felingua.com">Felingua</Link> in public
+                        Product Manager · Indie Hacker
                     </Text>
                 </div>
 
                 <Avatar className="mb-4 sm:mb-0" />
             </section>
 
-            <section>
+            <section className="space-y-4 sm:space-y-6">
+                <Heading as="h2">Current Projects</Heading>
+                <div className="grid grid-cols-2">
+                    <a className="group border-r" href="https://felingua.com">
+                        <Heading
+                            as="h3"
+                            className="group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors"
+                        >
+                            Felingua <span className="text-[0.8em]">↗</span>
+                        </Heading>
+                        <Text variant="secondary">
+                            Language practice made easy.
+                        </Text>
+                    </a>
+                </div>
+            </section>
+
+            <section className="space-y-4 sm:space-y-6">
                 <Heading as="h2">Recent Posts</Heading>
-                <List className="mt-4 sm:mt-6" posts={posts.slice(0, 3)} />
-                <Separator className="my-6" />
-                {/* <Link href="/posts">See All Posts →</Link> */}
+                <List posts={posts.slice(0, 3)} />
+                <Separator />
+                {/* <Link className="inline-block" href="/posts">See All Posts →</Link> */}
             </section>
         </Container>
     </App>
