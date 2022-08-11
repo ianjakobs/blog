@@ -26,7 +26,7 @@ const Page = ({ posts }: PageProps) => (
             <section className="space-y-4 sm:space-y-6">
                 <Heading as="h2">Current Projects</Heading>
                 <div className="grid grid-cols-2">
-                    <a className="group border-r" href="https://felingua.com">
+                    <a className="group" href="https://felingua.com">
                         <Heading
                             as="h3"
                             className="group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors"
@@ -37,6 +37,7 @@ const Page = ({ posts }: PageProps) => (
                             Language practice made easy.
                         </Text>
                     </a>
+                    <Separator orientation="vertical" />
                 </div>
             </section>
 

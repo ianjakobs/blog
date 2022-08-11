@@ -31,6 +31,7 @@ const withMDX = MDX({
         ],
         remarkPlugins: [
             [remarkTOC, {
+                heading: 'contents',
                 maxDepth: 3,
                 ordered: true,
                 tight: true,
