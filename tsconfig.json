@@ -17,14 +17,14 @@
         "noEmit": true,
         "paths": {
             "@/*": [
-                "./*"
+                "src/*"
             ]
         },
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "strict": true,
         "target": "es5",
-        "tsBuildInfoFile": "./.next/tsconfig.tsbuildinfo"
+        "tsBuildInfoFile": ".next/tsconfig.tsbuildinfo"
     },
     "exclude": [
         "node_modules"

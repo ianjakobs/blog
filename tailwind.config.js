@@ -2,9 +2,9 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
     content: [
-        './components/**/*.tsx',
-        './next.config.mjs',
-        './pages/**/*.tsx',
+        'next.config.mjs',
+        'src/components/**/*.tsx',
+        'src/pages/**/*.tsx',
     ],
     plugins: [
         require('@tailwindcss/typography'),

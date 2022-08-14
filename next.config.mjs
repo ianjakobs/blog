@@ -52,7 +52,7 @@ export default withMDX({
         config.module.rules.push({
             test: /\.mdx$/,
             use: [
-                './lib/helpers/process-mdx',
+                './src/lib/helpers/process-mdx',
             ],
         })
 

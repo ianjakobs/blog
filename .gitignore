@@ -18,9 +18,3 @@ npm-debug.log*
 # Next.js
 /.next/
 /out/
-
-# Production
-/build
-
-# Testing
-/coverage

@@ -43,10 +43,10 @@ const generate = async () => {
         webMaster: `${EMAIL} (${NAME})`,
     })
 
-    fs.readdirSync(join(process.cwd(), 'pages/posts'))
+    fs.readdirSync(join(process.cwd(), 'src/pages/posts'))
         .filter(name => name.endsWith('.mdx'))
         .map((name) => {
-            const content = fs.readFileSync(join(process.cwd(), 'pages/posts', name))
+            const content = fs.readFileSync(join(process.cwd(), 'src/pages/posts', name))
             const { content: markdown, data } = matter(content)
             const { value } = parse(
                 markdown.replace(/]\(\/posts/g, `](${process.env.URL}/posts`)
