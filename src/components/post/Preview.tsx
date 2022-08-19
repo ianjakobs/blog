@@ -4,7 +4,7 @@ import type { Post } from '@/types'
 import { Heading, Text, Time } from '@/components/ui'
 
 export type PreviewProps = {
-    post: Post
+    post: Required<Pick<Post, 'created' | 'excerpt' | 'slug' | 'title'>>
 }
 
 const Preview = ({ post }: PreviewProps) => (

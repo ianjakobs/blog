@@ -1,7 +1,7 @@
+import type { Post } from '@/types'
 import { App } from '@/components/layouts'
 import { Container } from '@/components/ui'
 import { List } from '@/components/post'
-import { Post } from '@/types'
 import { getPosts } from '@/lib/helpers'
 
 type PageProps = {

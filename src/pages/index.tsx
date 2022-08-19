@@ -1,8 +1,8 @@
+import type { Post } from '@/types'
 import { App } from '@/components/layouts'
 import { Avatar, Container, Heading, Separator, Text } from '@/components/ui'
 import { List } from '@/components/post'
 import { NAME } from '@/lib/constants'
-import { Post } from '@/types'
 import { getPosts } from '@/lib/helpers'
 
 type PageProps = {
