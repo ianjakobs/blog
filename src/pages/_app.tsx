@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import * as Fathom from 'fathom-client'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { AppProps } from 'next/app'
 import { MDXProvider } from '@mdx-js/react'
 import { useEffect } from 'react'
@@ -45,6 +45,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                     'pomodoro-menu': 'max-w-[300px]',
                 }
 
+                const sizes = '(min-width: 640px) 640px, 100vw'
                 const className = Object.keys(classNames).reduce((str, key) => src.includes(key)
                     ? str += classNames[key as keyof typeof classNames]
                     : str
@@ -53,14 +54,22 @@ const App = ({ Component, pageProps }: AppProps) => {
                 return (
                     <>
                         {hasAppearance && (
-                            <picture className={`hidden invisible dark:block dark:visible ${className}`}>
-                                <Image alt={alt} src={src.replace('-light', '-dark')} {...props} />
-                            </picture>
+                            <Image
+                                alt={alt}
+                                className={`hidden dark:block ${className}`}
+                                sizes={sizes}
+                                src={src.replace('-light', '-dark')}
+                                {...props}
+                            />
                         )}
 
-                        <picture className={`block ${className} ${hasAppearance ? 'dark:hidden dark:invisible' : ''}`}>
-                            <Image alt={alt} src={src} {...props} />
-                        </picture>
+                        <Image
+                            alt={alt}
+                            className={`${hasAppearance ? 'dark:hidden' : ''} ${className}`}
+                            sizes={sizes}
+                            src={src}
+                            {...props}
+                        />
                     </>
                 )
             },
