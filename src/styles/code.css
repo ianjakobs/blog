@@ -1,4 +1,5 @@
 .prose pre {
+    @apply -mx-3 sm:-mx-4 lg:-mx-6;
     @apply border border-gray-200 dark:border-gray-700;
     @apply bg-gray-100 dark:bg-gray-800;
 }
