@@ -15,6 +15,9 @@ module.exports = {
                 accent: colors.rose,
                 gray: colors.neutral,
             },
+            transitionDuration: {
+                DEFAULT: '75ms',
+            },
             typography: () => ({
                 DEFAULT: {
                     css: {

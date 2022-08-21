@@ -1,11 +1,10 @@
 import { Fragment } from 'react'
 
-import Preview from './Preview'
-import type { Post } from '@/types'
+import Preview, { type PreviewProps } from './Preview'
 import { Separator } from '@/components/ui'
 
 export type ListProps = React.HTMLAttributes<HTMLElement> & {
-    posts: Post[]
+    posts: PreviewProps['post'][]
 }
 
 const List = ({

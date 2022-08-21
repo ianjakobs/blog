@@ -44,6 +44,9 @@ const withMDX = MDX({
 export default withMDX({
     experimental: {
         esmExternals: true,
+        images: {
+            allowFutureImage: true,
+        },
     },
     pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
     poweredByHeader: false,

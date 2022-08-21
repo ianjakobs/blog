@@ -1,8 +1,8 @@
 import fs from 'fs'
 
 import getPost from './get-post'
+import type { PostFields } from '@/types'
 import { POSTS_DIRECTORY } from '@/lib/constants'
-import { PostFields } from '@/types'
 
 const getPosts = (fields: PostFields = []) =>
     fs.readdirSync(POSTS_DIRECTORY)
