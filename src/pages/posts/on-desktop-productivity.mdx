@@ -39,7 +39,8 @@ Now, whenever you open the Mail app, it will open on the space that you're alrea
 
 ![Screenshot of "Dock → Options → Assign To"](/posts/on-desktop-productivity/macos-assign-to-light.png)
 
-_Note: For this to show up you'll need to have at least two spaces open._
+> **Note**
+> For this to show up you'll need to have at least two spaces open.
 
 ### Hot Corners
 
@@ -179,7 +180,8 @@ Now, the `Escape` key _is_ useful to me. Not in the least because I use Vim, but
 }
 ```
 
-_Note: This modification on its own can also be done without third-party apps. Go into **System Preferences → Keyboard → Modifier Keys…** to change the behavior of any of the keyboard's modifier keys, including the `Caps Lock`. However, this falls short when wanting to do more complex modifications, as I describe in the following subsections._
+> **Note**
+> This modification on its own can also be done without third-party apps. Go into **System Preferences → Keyboard → Modifier Keys…** to change the behavior of any of the keyboard's modifier keys, including the `Caps Lock`. However, this falls short when wanting to do more complex modifications, as I describe in the following subsections.
 
 ### Remap `Caps Lock` to `Hyper` Key
 
@@ -189,7 +191,8 @@ The `Hyper` key is the combination of all four modifier keys—`Command`, `Contr
 
 This keyboard modification is what enables nearly all of my macros, as described in the [Keyboard Maestro](#keyboard-maestro) section.
 
-_Note: The configuration for this is included in the previous subsection._
+> **Note**
+> The configuration for this is included in the previous subsection.
 
 ### Remap `Shift-Caps Lock` to `Caps Lock`
 
@@ -310,7 +313,8 @@ Lastly, this is an easy way improve my navigational abilities. The arrow keys ar
 }
 ```
 
-_Note: The choice for using `h`, `j`, `k`, and `l` might seem arbitrary, but it means you can navigate with just your right hand all from the home row._
+> **Note**
+> The choice for using `h`, `j`, `k`, and `l` might seem arbitrary, but it means you can navigate with just your right hand all from the home row.
 
 ## Keyboard Maestro
 
@@ -334,7 +338,8 @@ Other than that, I also have a **→ Helpers** group, with the arrow to keep it 
 
 To use these, insert the action called "Execute a Macro". You can give it a parameter as well, and if you set an [instance variable](https://wiki.keyboardmaestro.com/manual/Variables#Instance_Variables_v8) in the helper macro then you can pass data back to the initial macro. See the [examples subsection](#other-examples) for inspiration on how to use this.
 
-_Note: As of Keyboard Maestro v10.0 this concept of helper macros has been completely replaced by subroutines. Functionally it's the same, but having it as a first-class citizen offers improvements in terms of clarity and usability._
+> **Note**
+> As of Keyboard Maestro v10.0 this concept of helper macros has been completely replaced by subroutines. Functionally it's the same, but having it as a first-class citizen offers improvements in terms of clarity and usability.
 
 ### Palettes
 
@@ -342,7 +347,8 @@ Palettes are by far my most used feature of Keyboard Maestro. With it, a small o
 
 There's a few different ways of having palettes show up, but my favorite is to use **Shows a palette for one action when → The hot key … is pressed**. With this, pressing the specified hot key will show the palette, and triggering any of its macros will hide it again.
 
-_Note: Sometimes I open up a palette only to decide I don't want to use any of its macros. Intuitively I'd press `Escape` to discard it, but that doesn't work—it uses `Enter` for that instead. As a workaround, I normally add an empty macro with `Escape` as the trigger. Not ideal, but it makes more sense to me than the default._
+> **Note**
+> Sometimes I open up a palette only to decide I don't want to use any of its macros. Intuitively I'd press `Escape` to discard it, but that doesn't work—it uses `Enter` for that instead. As a workaround, I normally add an empty macro with `Escape` as the trigger. Not ideal, but it makes more sense to me than the default.
 
 As mentioned earlier, the combination of the [`Hyper`](#remap-caps-lock-to-hyper-key) key is so impossible it's never used, and it can therefore be freely used for any combination. However, if you start using it for all your shortcuts directly, you'll soon find that you run out of sensible combinations.
 
