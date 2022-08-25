@@ -11,14 +11,14 @@ const generate = async () => {
     sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
     ;(await globby([
-        'pages/**/*.(mdx|tsx)',
-        '!pages/**/[*.tsx',
-        '!pages/_*.tsx',
-        '!pages/api',
+        'src/pages/**/*.(mdx|tsx)',
+        '!src/pages/**/[*.tsx',
+        '!src/pages/_*.tsx',
+        '!src/pages/api',
     ])).forEach((page) => {
         const path = page
+            .replace('src/pages', '')
             .replace('/index', '')
-            .replace('pages', '')
             .replace('.tsx', '')
             .replace('.mdx', '')
 

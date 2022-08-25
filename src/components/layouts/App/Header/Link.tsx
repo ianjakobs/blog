@@ -12,7 +12,7 @@ const Link = ({
 }: LinkProps) => (
     <NextLink {...props}>
         <a className={[
-            'transition',
+            'py-3 transition',
             styles.variants[variant],
             className,
         ].join(' ')} {...props} />
