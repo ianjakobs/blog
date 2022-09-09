@@ -55,7 +55,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 ) : <blockquote {...props} />
             },
             img: ({
-                alt,
+                alt = '',
                 src = '',
                 ...props
             }: Pick<JSX.IntrinsicElements['img'], 'alt' | 'height' | 'src' | 'width'>) => {
