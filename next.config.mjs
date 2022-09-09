@@ -44,13 +44,11 @@ const withMDX = MDX({
 export default withMDX({
     experimental: {
         esmExternals: true,
-        images: {
-            allowFutureImage: true,
-        },
     },
     pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
     poweredByHeader: false,
     reactStrictMode: true,
+    swcMinify: true,
     webpack(config) {
         config.module.rules.push({
             test: /\.mdx$/,
