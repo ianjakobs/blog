@@ -30,7 +30,7 @@
         "@typescript-eslint/eslint-plugin": "^5.36.2",
         "autoprefixer": "^10.4.8",
         "eslint": "^8.23.0",
-        "eslint-config-next": "^12.2.5",
+        "eslint-config-next": "^12.3.0",
         "globby": "^13.1.2",
         "gray-matter": "^4.0.3",
         "postcss": "^8.4.16",
