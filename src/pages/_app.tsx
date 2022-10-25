@@ -70,31 +70,31 @@ const App = ({ Component, pageProps }: AppProps) => {
         const className = Object.keys(classNames).reduce((str, key) => src.includes(key)
           ? str += classNames[key as keyof typeof classNames]
           : str
-                , '')
+        , '')
 
-              return (
-                <>
-                  {hasAppearance && (
-                    <Image
-                      alt={alt}
-                      className={`hidden dark:block ${className}`}
-                      sizes={sizes}
-                      src={src.replace('-light', '-dark')}
-                      {...props}
-                    />
-                  )}
+        return (
+          <>
+            {hasAppearance && (
+              <Image
+                alt={alt}
+                className={`hidden dark:block ${className}`}
+                sizes={sizes}
+                src={src.replace('-light', '-dark')}
+                {...props}
+              />
+            )}
 
-                  <Image
-                    alt={alt}
-                    className={`${hasAppearance ? 'dark:hidden' : ''} ${className}`}
-                    sizes={sizes}
-                    src={src}
-                    {...props}
-                  />
-                </>
-              )
+            <Image
+              alt={alt}
+              className={`${hasAppearance ? 'dark:hidden' : ''} ${className}`}
+              sizes={sizes}
+              src={src}
+              {...props}
+            />
+          </>
+        )
       },
-      }}>
+    }}>
       <Component {...pageProps} />
     </MDXProvider>
   )
