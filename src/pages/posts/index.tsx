@@ -5,26 +5,26 @@ import { List } from '@/components/post'
 import { getPosts } from '@/lib/helpers'
 
 type PageProps = {
-    posts: Post[]
+  posts: Post[]
 }
 
 const Page = ({ posts }: PageProps) => (
-    <App heading="All Posts" meta={{ title: 'Posts' }}>
-        <Container className="mt-4 sm:mt-6">
-            <List posts={posts} />
-        </Container>
-    </App>
+  <App heading="All Posts" meta={{ title: 'Posts' }}>
+    <Container className="mt-4 sm:mt-6">
+      <List posts={posts} />
+    </Container>
+  </App>
 )
 
 export const getStaticProps = async () => ({
-    props: {
-        posts: getPosts([
-            'created',
-            'excerpt',
-            'slug',
-            'title',
-        ]),
-    },
+  props: {
+    posts: getPosts([
+      'created',
+      'excerpt',
+      'slug',
+      'title',
+    ]),
+  },
 })
 
 export default Page

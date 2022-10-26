@@ -6,92 +6,92 @@ import rehypeSlug from 'rehype-slug'
 import remarkTOC from 'remark-toc'
 
 const withMDX = MDX({
-    options: {
-        providerImportSource: '@mdx-js/react',
-        rehypePlugins: [
-            [rehypeImgSize, {
-                dir: 'public',
-            }],
-            rehypePrism,
-            rehypeSlug,
-            [rehypeAutolinkHeadings, {
-                content: ({ tagName }) => ({
-                    children: [{ type: 'text', value: '#'.repeat(Number(tagName.charAt(1))) }],
-                    tagName: 'span',
-                    type: 'element',
-                    properties: {
-                        className: [
-                            'md:absolute', 'md:-translate-x-full',
-                            'pr-2', 'md:pr-3', 'inline-block',
-                            'text-gray-300', 'dark:text-gray-600',
-                        ],
-                    },
-                }),
-            }],
-        ],
-        remarkPlugins: [
-            [remarkTOC, {
-                heading: 'contents',
-                maxDepth: 3,
-                ordered: true,
-                tight: true,
-            }],
-        ],
-    },
+  options: {
+    providerImportSource: '@mdx-js/react',
+    rehypePlugins: [
+      [rehypeImgSize, {
+        dir: 'public',
+      }],
+      rehypePrism,
+      rehypeSlug,
+      [rehypeAutolinkHeadings, {
+        content: ({ tagName }) => ({
+          children: [{ type: 'text', value: '#'.repeat(Number(tagName.charAt(1))) }],
+          tagName: 'span',
+          type: 'element',
+          properties: {
+            className: [
+              'md:absolute', 'md:-translate-x-full',
+              'pr-2', 'md:pr-3', 'inline-block',
+              'text-gray-300', 'dark:text-gray-600',
+            ],
+          },
+        }),
+      }],
+    ],
+    remarkPlugins: [
+      [remarkTOC, {
+        heading: 'contents',
+        maxDepth: 3,
+        ordered: true,
+        tight: true,
+      }],
+    ],
+  },
 })
 
 /** @type {import('next').NextConfig} */
 export default withMDX({
-    experimental: {
-        esmExternals: true,
-    },
-    pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-    poweredByHeader: false,
-    reactStrictMode: true,
-    swcMinify: true,
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.mdx$/,
-            use: [
-                './src/lib/helpers/process-mdx',
-            ],
-        })
+  experimental: {
+    esmExternals: true,
+  },
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  poweredByHeader: false,
+  reactStrictMode: true,
+  swcMinify: true,
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.mdx$/,
+      use: [
+        './src/lib/helpers/process-mdx',
+      ],
+    })
 
-        return config
-    },
-    async headers() {
-        return [
-            {
-                source: '/:path*',
-                headers: [
-                    {
-                        key: 'Content-Security-Policy',
-                        value: [
-                            `default-src 'self';`,
-                            `connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'ws://localhost:3000' : ''} vitals.vercel-insights.com;`,
-                            `img-src 'self' data: ${process.env.NEXT_PUBLIC_FATHOM_DOMAIN};`,
-                            `style-src 'self' 'unsafe-inline';`,
-                            `script-src 'self' ${process.env.NODE_ENV === 'production' ? `'unsafe-inline'` : `'unsafe-eval'`} ${process.env.NEXT_PUBLIC_FATHOM_DOMAIN};`,
-                        ].join(' '),
-                    },
-                    {
-                        key: 'Referrer-Policy',
-                        value: 'strict-origin-when-cross-origin',
-                    },
-                    {
-                        key: 'X-Content-Type-Options',
-                        value: 'nosniff',
-                    },
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'DENY',
-                    },
-                    {
-                        key: 'X-XSS-Protection',
-                        value: '1; mode=block',
-                    },
-                ],
-            },
-        ]
-    },
+    return config
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              `default-src 'self';`,
+              `connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'ws://localhost:3000' : ''} vitals.vercel-insights.com;`,
+              `img-src 'self' data: ${process.env.NEXT_PUBLIC_FATHOM_DOMAIN};`,
+              `style-src 'self' 'unsafe-inline';`,
+              `script-src 'self' ${process.env.NODE_ENV === 'production' ? `'unsafe-inline'` : `'unsafe-eval'`} ${process.env.NEXT_PUBLIC_FATHOM_DOMAIN};`,
+            ].join(' '),
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      },
+    ]
+  },
 })

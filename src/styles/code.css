@@ -1,7 +1,7 @@
 .prose pre {
-    @apply -mx-3 sm:-mx-4 lg:-mx-6;
-    @apply border border-gray-200 dark:border-gray-700;
-    @apply bg-gray-100 dark:bg-gray-800;
+  @apply -mx-3 sm:-mx-4 lg:-mx-6;
+  @apply border border-gray-200 dark:border-gray-700;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 .token.cdata,
@@ -9,7 +9,7 @@
 .token.doctype,
 .token.prolog,
 .token.punctuation {
-    @apply text-gray-700 dark:text-gray-300;
+  @apply text-gray-700 dark:text-gray-300;
 }
 
 .token.constant,
@@ -18,7 +18,7 @@
 .token.property,
 .token.symbol,
 .token.tag {
-    @apply text-red-500 dark:text-red-400;
+  @apply text-red-500 dark:text-red-400;
 }
 
 .token.selector,
@@ -26,7 +26,7 @@
 .token.string,
 .token.char,
 .token.inserted {
-    @apply text-green-500 dark:text-green-400;
+  @apply text-green-500 dark:text-green-400;
 }
 
 .language-css .token.string,
@@ -40,28 +40,28 @@
 .token.regex,
 .token.url,
 .token.variable {
-    @apply text-orange-500 dark:text-orange-300;
+  @apply text-orange-500 dark:text-orange-300;
 }
 
 .token.atrule,
 .token.attr-value {
-    @apply text-purple-500 dark:text-purple-400;
+  @apply text-purple-500 dark:text-purple-400;
 }
 
 .token.function {
-    @apply text-blue-500 dark:text-blue-400;
+  @apply text-blue-500 dark:text-blue-400;
 }
 
 code[class*='language-'],
 pre[class*='language-'] {
-    @apply text-gray-800 dark:text-gray-50;
+  @apply text-gray-800 dark:text-gray-50;
 }
 
 pre::-webkit-scrollbar {
-    @apply hidden;
+  @apply hidden;
 }
 
 pre {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

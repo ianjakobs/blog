@@ -1,15 +1,15 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:import/errors",
-        "plugin:import/typescript",
-        "plugin:jsx-a11y/strict",
-        "next",
-        "next/core-web-vitals"
-    ],
-    "rules": {
-        "jsx-a11y/anchor-has-content": 0,
-        "jsx-a11y/anchor-is-valid": 0
-    }
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/strict",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "jsx-a11y/anchor-has-content": 0,
+    "jsx-a11y/anchor-is-valid": 0
+  }
 }
