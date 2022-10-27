@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import * as Fathom from 'fathom-client'
-import Image from 'next/future/image'
+import Image, { type ImageProps } from 'next/image'
 import { AppProps } from 'next/app'
 import { Children } from 'react'
 import { MDXProvider } from '@mdx-js/react'
@@ -56,7 +56,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       },
       img: ({
         alt = '',
+        height,
         src = '',
+        width,
         ...props
       }: Pick<JSX.IntrinsicElements['img'], 'alt' | 'height' | 'src' | 'width'>) => {
         const hasAppearance = src.includes('-light')
@@ -66,6 +68,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           'pomodoro-menu': 'max-w-[300px]',
         }
 
+        const dimensions = { height, width } as Pick<ImageProps, 'height' | 'width'>
         const sizes = '(min-width: 640px) 640px, 100vw'
         const className = Object.keys(classNames).reduce((str, key) => src.includes(key)
           ? str += classNames[key as keyof typeof classNames]
@@ -80,6 +83,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 className={`hidden dark:block ${className}`}
                 sizes={sizes}
                 src={src.replace('-light', '-dark')}
+                {...dimensions}
                 {...props}
               />
             )}
@@ -89,6 +93,7 @@ const App = ({ Component, pageProps }: AppProps) => {
               className={`${hasAppearance ? 'dark:hidden' : ''} ${className}`}
               sizes={sizes}
               src={src}
+              {...dimensions}
               {...props}
             />
           </>
