@@ -10,13 +10,11 @@ const Link = ({
   variant = 'default',
   ...props
 }: LinkProps) => (
-  <NextLink {...props}>
-    <a className={[
-      'py-3 transition',
-      styles.variants[variant],
-      className,
-    ].join(' ')} {...props} />
-  </NextLink>
+  <NextLink className={[
+    'py-3 transition',
+    styles.variants[variant],
+    className,
+  ].join(' ')} {...props} />
 )
 
 const styles = {

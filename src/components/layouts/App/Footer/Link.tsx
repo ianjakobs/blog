@@ -8,19 +8,17 @@ const Link = ({
   className = '',
   ...props
 }: LinkProps) => (
-  <NextLink {...props}>
-    <a className={[
-      'font-medium text-gray-500 dark:text-gray-400',
-      'hover:text-accent-500 dark:hover:text-accent-400 transition-colors',
-      className,
-    ].join(' ')} {...props}>
-      {children}
-      {props.href.startsWith('http') && (
-        <span className="text-[0.8em]">
-          {` `}↗
-        </span>
-      )}
-    </a>
+  <NextLink className={[
+    'font-medium text-gray-500 dark:text-gray-400',
+    'hover:text-accent-500 dark:hover:text-accent-400 transition-colors',
+    className,
+  ].join(' ')} {...props}>
+    {children}
+    {props.href.startsWith('http') && (
+      <span className="text-[0.8em]">
+        {` `}↗
+      </span>
+    )}
   </NextLink>
 )
 

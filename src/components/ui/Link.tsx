@@ -1,5 +1,4 @@
-import NextLink from 'next/link'
-import type { LinkProps as NextLinkProps } from 'next/link'
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & NextLinkProps
 
@@ -20,10 +19,8 @@ const Link = ({
       </span>
     </a>
   ) : (
-    <NextLink {...props}>
-      <a className={`${styles} ${className}`} {...props}>
-        {children}
-      </a>
+    <NextLink className={`${styles} ${className}`} {...props}>
+      {children}
     </NextLink>
   )
 }
