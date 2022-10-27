@@ -48,7 +48,6 @@ export default withMDX({
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.mdx$/,
