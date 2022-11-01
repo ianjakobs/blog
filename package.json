@@ -36,7 +36,7 @@
     "postcss": "^8.4.18",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-img-size": "^1.0.1",
-    "rehype-slug": "^5.0.1",
+    "rehype-slug": "^5.1.0",
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
     "remark-rehype": "^10.1.0",
