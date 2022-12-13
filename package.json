@@ -31,7 +31,7 @@
     "autoprefixer": "^10.4.13",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.6",
-    "globby": "^13.1.2",
+    "globby": "^13.1.3",
     "gray-matter": "^4.0.3",
     "postcss": "^8.4.20",
     "rehype-autolink-headings": "^6.1.1",
