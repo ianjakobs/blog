@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
-    "@mdx-js/loader": "^2.1.5",
+    "@mdx-js/loader": "^2.2.1",
     "@next/mdx": "^13.0.6",
     "@tailwindcss/typography": "^0.5.8",
     "@types/node": "^18.11.15",
