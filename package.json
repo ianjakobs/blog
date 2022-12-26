@@ -22,7 +22,7 @@
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/loader": "^2.2.1",
-    "@next/mdx": "^13.1.0",
+    "@next/mdx": "^13.1.1",
     "@tailwindcss/typography": "^0.5.8",
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
